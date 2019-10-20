@@ -1,7 +1,7 @@
 import faker from "faker";
 const generateNanoid = require("nanoid/non-secure/generate");
 
-const makeMissingPeopleSearchResults = () => {
+const makeMissingPeopleSearchResultsFunc = () => {
   let searchResults: { [s: string]: any; } = {};
   let id = "";
 
@@ -20,5 +20,6 @@ const makeMissingPeopleSearchResults = () => {
   return searchResults;
 };
 
+const makeMissingPeopleSearchResults = makeMissingPeopleSearchResultsFunc();
 
 export { makeMissingPeopleSearchResults };

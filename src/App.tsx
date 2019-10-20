@@ -10,6 +10,7 @@ import SearchResults from "./pages/SearchResults";
 import RegisterMissingPerson from "./pages/RegisterMissingPerson";
 import RegisterSearchingPerson from "./pages/RegisterSearchingPerson";
 import MissingPerson from "./pages/MissingPerson";
+import { makeMissingPeopleSearchResults } from "./util/demo";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -29,6 +30,8 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+
+window.localStorage.setItem("missingPeopleSearchResults", JSON.stringify(makeMissingPeopleSearchResults));
 
 const App: React.FC = () => {
   const isAuthed = true;

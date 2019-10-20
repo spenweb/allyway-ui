@@ -20,8 +20,7 @@ import { add } from "ionicons/icons";
 import { RouteComponentProps } from "react-router-dom";
 import Header from "../components/Header";
 import styled from "styled-components";
-import { makeMissingPeopleSearchResults } from "../util/demo";
-import moment from "moment"
+import moment from "moment";
 
 const FlexRow = styled.div`
   display: flex;
@@ -34,6 +33,11 @@ const RoundImage = styled.div`
   margin-right: 3em;
 `;
 
+const makeMissingPeopleSearchResults = JSON.parse(
+  window.localStorage.getItem("missingPeopleSearchResults") || ""
+);
+console.log("results list", makeMissingPeopleSearchResults);
+
 const Home: React.FC<RouteComponentProps> = props => {
   console.log("the match", props.match.params);
   //@ts-ignore
@@ -43,33 +47,39 @@ const Home: React.FC<RouteComponentProps> = props => {
       <Header {...props} />
       <IonContent className="ion-padding">
         <FlexRow>
-        <IonCard
-                style={{ minimumWidth: "500px", width: "50%" }}
-              >
-                <IonCardHeader>
-                  <IonCardSubtitle>Missing person</IonCardSubtitle>
-                  <IonCardTitle>{result.name}</IonCardTitle>
-                </IonCardHeader>
+          <IonCard style={{ minimumWidth: "500px", width: "50%" }}>
+            <IonCardHeader>
+              <IonCardSubtitle>Missing person</IonCardSubtitle>
+              <IonCardTitle>{result.name}</IonCardTitle>
+            </IonCardHeader>
 
-                <IonCardContent>
-                  <FlexRow>
-                    <RoundImage>
-                      <IonImg src={result.image} />
-                    </RoundImage>
-                    <div>
-                      <p>Last seen family:</p>
-                      <div>
-                        {result.place} at{" "}
-                        {moment(result.time).format("MMMM Do YYYY")}
-                      </div>
-                    </div>
-                  </FlexRow>
-                  <FlexRow>
-                    <IonButton color="danger" onClick={() => props.history.push("/missing-person/" + result.id)}>Contact</IonButton>
-                  </FlexRow>
-                </IonCardContent>
-              </IonCard>
-          </FlexRow>
+            <IonCardContent>
+              <FlexRow>
+                <RoundImage>
+                  <IonImg src={result.image} />
+                </RoundImage>
+                <div>
+                  <p>Last seen family:</p>
+                  <div>
+                    {result.place} at{" "}
+                    {moment(result.time).format("MMMM Do YYYY")}
+                  </div>
+                </div>
+              </FlexRow>
+            </IonCardContent>
+          </IonCard>
+        </FlexRow>
+        <FlexRow>
+          <p>Send request</p>
+        </FlexRow>
+        <FlexRow>
+          <textarea></textarea>
+        </FlexRow>
+        <FlexRow>
+          <IonButton>
+            Send Request
+          </IonButton>
+        </FlexRow>
       </IonContent>
     </IonPage>
   );
