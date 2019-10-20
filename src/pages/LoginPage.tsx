@@ -1,6 +1,5 @@
 import {
   IonBackButton,
-  IonButtons,
   IonContent,
   IonHeader,
   IonPage,
@@ -14,14 +13,13 @@ import {
 import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
-import {RouteComponentProps} from "react-router-dom"
-import Logo from "../components/Logo"
+import { RouteComponentProps } from "react-router-dom";
+import Logo from "../components/Logo";
 
 const FlexRow = styled.div`
   display: flex;
   justify-content: center;
 `;
-
 
 const Container = styled.div`
   padding: 20px;
@@ -30,13 +28,13 @@ const Container = styled.div`
   background-color: #dd545c;
 `;
 
-const LoginPage: React.FC<RouteComponentProps> = (props) => {
+const LoginPage: React.FC<RouteComponentProps> = props => {
   return (
     <IonPage>
       <IonContent>
         <Container>
           <FlexRow>
-            <Logo width={400} {...props}/>
+            <Logo width={400} {...props} />
           </FlexRow>
           <FlexRow>
             <h1 style={{ color: "white" }}>Please sign in</h1>
@@ -54,7 +52,12 @@ const LoginPage: React.FC<RouteComponentProps> = (props) => {
             </IonItem>
           </FlexRow>
           <FlexRow>
-            <IonButton color="light" onClick={() => props.history.push("/home")}>Login</IonButton>
+            <IonButton
+              color="light"
+              onClick={() => props.history.push("/home")}
+            >
+              Login
+            </IonButton>
           </FlexRow>
           <FlexRow>
             <IonButton color="danger">Register as missing person</IonButton>

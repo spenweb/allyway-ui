@@ -10,7 +10,7 @@ const LogoBox = styled.div`
 const Logo: React.FC<any> = props => {
   return (
     <LogoBox style={{width: props.width}} onClick={() => props.history.push("/home")}>
-      <IonImg src={"/assets/logo.png"} />
+      <IonImg src={props.size === "small" ? "/assets/logo-small.png" : "/assets/logo.png"} />
     </LogoBox>
   );
 };

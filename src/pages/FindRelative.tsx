@@ -8,8 +8,9 @@ import {
   IonToolbar
 } from '@ionic/react';
 import React from 'react';
+import {RouteComponentProps} from "react-router-dom"
 
-const NewItem: React.FC = () => {
+const NewItem: React.FC<RouteComponentProps> = () => {
   return (
     <IonPage>
       <IonHeader>
