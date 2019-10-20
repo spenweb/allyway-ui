@@ -5,8 +5,11 @@ import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 import NewItem from "./pages/NewItem";
 import LoginPage from "./pages/LoginPage";
-import FindRelative from "./pages/FindRelative"
-import SearchResults from "./pages/SearchResults"
+import FindRelative from "./pages/FindRelative";
+import SearchResults from "./pages/SearchResults";
+import RegisterMissingPerson from "./pages/RegisterMissingPerson";
+import RegisterSearchingPerson from "./pages/RegisterSearchingPerson";
+import MissingPerson from "./pages/MissingPerson";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -34,7 +37,16 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/home" component={Home} />
+          <Route
+            path="/register-as-missing-person"
+            component={RegisterMissingPerson}
+          />
+          <Route
+            path="/register-as-searching-person"
+            component={RegisterSearchingPerson}
+          />
           <Route path="/login" component={LoginPage} />
+          <Route path="/missing-person/:id" component={MissingPerson} />
           <Route
             path="/new"
             render={props => {

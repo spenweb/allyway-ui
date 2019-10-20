@@ -1,20 +1,19 @@
 import {
   IonContent,
-  IonList,
+  IonHeader,
   IonPage,
   IonCard,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonImg,
   IonCardContent,
-  IonBackButton,
-  IonButtons,
-  IonLabel,
+  IonBadge,
+  IonSelect,
   IonSelectOption,
   IonDatetime,
   IonInput,
-  IonButton,
-  IonImg
+  IonButton
 } from "@ionic/react";
 import React from "react";
 import { add } from "ionicons/icons";
@@ -22,17 +21,10 @@ import { RouteComponentProps } from "react-router-dom";
 import Header from "../components/Header";
 import styled from "styled-components";
 import { makeMissingPeopleSearchResults } from "../util/demo";
-import moment from "moment";
-import _ from "lodash";
-import { connect } from "react-redux";
-
-interface Result {id: string, name: string, image: string, place: string, time: Date}
+import moment from "moment"
 
 const FlexRow = styled.div`
   display: flex;
-`;
-
-const MiddleFlexRow = styled(FlexRow)`
   justify-content: center;
 `;
 
@@ -42,49 +34,33 @@ const RoundImage = styled.div`
   margin-right: 3em;
 `;
 
-const searchResults = makeMissingPeopleSearchResults;
-console.log(searchResults);
-
 const Home: React.FC<RouteComponentProps> = props => {
+  console.log("the match", props.match.params);
   //@ts-ignore
-  const searchResults = props.searchResults;
+  const result = makeMissingPeopleSearchResults[props.match.params.id];
   return (
     <IonPage>
       <Header {...props} />
       <IonContent className="ion-padding">
-        <MiddleFlexRow>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/home" />
-          </IonButtons>
-          <IonButton color="medium">Subscribe to search terms</IonButton>
-        </MiddleFlexRow>
-        <IonList>
-          {_.map(searchResults, (result: Result, index) => (
-            <MiddleFlexRow>
-              <IonCard
-                key={index}
+        <FlexRow>
+        <IonCard
                 style={{ minimumWidth: "500px", width: "50%" }}
               >
                 <IonCardHeader>
                   <IonCardSubtitle>Missing person</IonCardSubtitle>
-                  
-                  <IonCardTitle>{
-                    result.name}</IonCardTitle>
+                  <IonCardTitle>{result.name}</IonCardTitle>
                 </IonCardHeader>
 
                 <IonCardContent>
                   <FlexRow>
                     <RoundImage>
-                      <IonImg src={
-                        result.image} />
+                      <IonImg src={result.image} />
                     </RoundImage>
                     <div>
                       <p>Last seen family:</p>
                       <div>
-                        {
-                          result.place} at{" "}
-                        {moment(
-                          result.time).format("MMMM Do YYYY")}
+                        {result.place} at{" "}
+                        {moment(result.time).format("MMMM Do YYYY")}
                       </div>
                     </div>
                   </FlexRow>
@@ -93,17 +69,10 @@ const Home: React.FC<RouteComponentProps> = props => {
                   </FlexRow>
                 </IonCardContent>
               </IonCard>
-            </MiddleFlexRow>
-          ))}
-        </IonList>
+          </FlexRow>
       </IonContent>
     </IonPage>
   );
 };
 
-//@ts-ignore
-const mapStateToProps = state => ({
-  searchResults: state.user.searchResults
-})
-
-export default connect()(Home);
+export default Home;

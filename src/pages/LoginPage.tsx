@@ -19,6 +19,7 @@ import Logo from "../components/Logo";
 const FlexRow = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 1em;
 `;
 
 const Container = styled.div`
@@ -34,7 +35,7 @@ const LoginPage: React.FC<RouteComponentProps> = props => {
       <IonContent>
         <Container>
           <FlexRow>
-            <Logo width={400} {...props} />
+            <Logo width={250} size="small" {...props} />
           </FlexRow>
           <FlexRow>
             <h1 style={{ color: "white" }}>Please sign in</h1>
@@ -60,10 +61,22 @@ const LoginPage: React.FC<RouteComponentProps> = props => {
             </IonButton>
           </FlexRow>
           <FlexRow>
-            <IonButton color="danger">Register as missing person</IonButton>
+            <IonButton
+              color="danger"
+              onClick={() => props.history.push("/register-as-missing-person")}
+            >
+              Register as missing person
+            </IonButton>
           </FlexRow>
           <FlexRow>
-            <IonButton color="danger">Register as family member</IonButton>
+            <IonButton
+              color="danger"
+              onClick={() =>
+                props.history.push("/register-as-searching-person")
+              }
+            >
+              Register as family member
+            </IonButton>
           </FlexRow>
         </Container>
       </IonContent>
