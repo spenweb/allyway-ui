@@ -3,75 +3,31 @@ import {
   IonTitle,
   IonToolbar,
   IonMenu,
-IonContent,
-IonList,
-IonItem,
-IonRouterOutlet
+  IonContent,
+  IonList,
+  IonItem,
+  IonRouterOutlet
 } from "@ionic/react";
 import React from "react";
 import { add } from "ionicons/icons";
+import styled from "styled-components";
+
+const Container = styled.div`
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: #dd545c;
+`;
 
 const Header: React.FC = () => {
   return (
-    <>
-    <IonMenu side="start" menuId="first">
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle>Start Menu</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonList>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-        </IonList>
-      </IonContent>
-    </IonMenu>
-
-    <IonMenu side="start" menuId="custom" class="my-custom-menu">
-      <IonHeader>
-        <IonToolbar color="tertiary">
-          <IonTitle>Custom Menu</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonList>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-        </IonList>
-      </IonContent>
-    </IonMenu>
-
-    <IonMenu side="end" type="push">
-      <IonHeader>
-        <IonToolbar color="danger">
-          <IonTitle>End Menu</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonList>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-          <IonItem>Menu Item</IonItem>
-        </IonList>
-      </IonContent>
-    </IonMenu>
-    <IonRouterOutlet></IonRouterOutlet>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Ally Way</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-  </>
-      
+    <IonHeader>
+      <IonToolbar >
+        <Container>
+          <IonTitle style={{color: "white"}}>Ally Way</IonTitle>
+        </Container>
+      </IonToolbar>
+    </IonHeader>
   );
 };
 

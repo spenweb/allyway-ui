@@ -34,7 +34,7 @@ const App: React.FC = () => {
           <Route path="/home" component={Home} />
           <Route path="/login" component={LoginPage} />
           <Route path="/new" render={props => {
-    return isAuthed ? <NewItem {...props} /> : <LoginPage />;
+    return isAuthed ? <NewItem {...props} /> : <LoginPage {...props}/>;
   }} />
           <Redirect exact from="/" to="/home" />
         </IonRouterOutlet>
